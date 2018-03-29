@@ -9,6 +9,15 @@
 		.buton {
 			margin-top: 40px;
 		}
+		body {
+			background-color: #e17055;
+			color: white;
+			
+		}
+		h2 {
+			font-size: 5em;
+			margin-top: 40%;
+		}
 	</style>
 </head>
 <body>
@@ -22,11 +31,11 @@
 	<script type="text/javascript">
 			//throttle Example
 
-			window.addEventListener("resize", throttle(callback, 1000));
-			window.addEventListener("resize", callback2);
+			window.addEventListener("resize", throttle(callback, 5000));
+			// window.addEventListener("resize", callback2);
 
 			function callback ()  { console.count("Throttled");     }
-			function callback2 () { console.count("Not Throttled"); }
+			// function callback2 () { console.count("Not Throttled"); }
 
 			function throttle (callback, limit) {
 			    var wait = false;                  // Initially, we're not waiting

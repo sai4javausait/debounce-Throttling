@@ -6,8 +6,17 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<style>
+		body {
+			background-color: #00cec9;
+			color: white;
+			
+		}
+		h2 {
+			font-size: 6em;
+			margin-top: 35%;
+		}
 		.buton {
-			margin-top: 40px;
+			margin-top: 50%;
 		}
 	</style>
 </head>
@@ -41,16 +50,16 @@
 				};
 			};
 
-			JD.firstName = function() {
+			JD.first = function() {
 			    console.log('Debounce');
 			};
 
-			JD.lastName = function() {
+			JD.last = function() {
 			    console.log('is working');
 			};
 
-			window.addEventListener('mousemove', JD.debounce(JD.lastName, 400));
-			window.addEventListener('mousemove', JD.debounce(JD.firstName, 400, true));
+			window.addEventListener('mousemove', JD.debounce(JD.last, 400));
+			window.addEventListener('mousemove', JD.debounce(JD.first, 400, true));
 	</script>
 </body>
 </html>
