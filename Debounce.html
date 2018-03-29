@@ -1,0 +1,59 @@
+<!-- debounce it limits the rate at which a function can fire.  -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Debounce Throttling Effect Example</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<style>
+		.buton {
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-med-12">
+				<h2 text-align="center">Move your cursor</h2>		
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+			var JD = {};
+			JD.debounce = function(func, wait, immediate) {
+				var timeout;
+				return function() {
+					var context = this,
+						args = arguments;
+					var later = function() {
+						timeout = null;
+						if ( !immediate ) {
+							func.apply(context, args);
+						}
+					};
+					var callNow = immediate && !timeout;
+					clearTimeout(timeout);
+					timeout = setTimeout(later, wait || 200);
+					if ( callNow ) { 
+						func.apply(context, args);
+					}
+				};
+			};
+
+			JD.firstName = function() {
+			    console.log('Debounce');
+			};
+
+			JD.lastName = function() {
+			    console.log('is working');
+			};
+
+			window.addEventListener('mousemove', JD.debounce(JD.lastName, 400));
+			window.addEventListener('mousemove', JD.debounce(JD.firstName, 400, true));
+	</script>
+</body>
+</html>
+
+<!-- https://codepen.io/johndugan/pen/BNwBWL -->
+

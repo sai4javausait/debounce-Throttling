@@ -1,0 +1,48 @@
+<!-- Throttling is a straightforward reduction of the trigger rate. It will cause the event listener to ignore some portion of the events while still firing the listeners at a constant (but reduced) rate. -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Debounce Throttling Effect Example</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<style>
+		.buton {
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-med-12">
+				<h2 text-align="center">Resize the Window</h2>		
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+			//throttle Example
+
+			window.addEventListener("resize", throttle(callback, 1000));
+			window.addEventListener("resize", callback2);
+
+			function callback ()  { console.count("Throttled");     }
+			function callback2 () { console.count("Not Throttled"); }
+
+			function throttle (callback, limit) {
+			    var wait = false;                  // Initially, we're not waiting
+			    return function () {               // We return a throttled function
+			        if (!wait) {                   // If we're not waiting
+			            callback.call();           // Execute users function
+			            wait = true;               // Prevent future invocations
+			            setTimeout(function () {   // After a period of time
+			                wait = false;          // And allow future invocations
+			            }, limit);
+			        }
+			    }
+			}
+
+	</script>
+</body>
+</html>
+
+<!-- https://jsfiddle.net/jonathansampson/m7G64/ -->
